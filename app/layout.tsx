@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ThemeScript from "@/components/ThemeScript";
+import BioBackground from "@/components/BioBackground";
+import DnaMouseCursor from "@/components/DnaMouseCursor";
 
 const serif = Source_Serif_4({
   subsets: ["latin"],
@@ -69,7 +71,9 @@ export default function RootLayout({
       <head>
         <ThemeScript />
       </head>
-      <body className="flex min-h-screen flex-col">
+      <body className="flex min-h-screen flex-col relative text-ink-900 dark:text-ink-100">
+        <BioBackground />
+        <DnaMouseCursor />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:rounded focus:bg-ink-900 focus:px-4 focus:py-2 focus:text-paper"

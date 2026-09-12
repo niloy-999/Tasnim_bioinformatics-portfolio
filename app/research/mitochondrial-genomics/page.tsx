@@ -3,7 +3,9 @@ import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import StatGrid from "@/components/StatGrid";
 import Figure from "@/components/Figure";
+import Card3D from "@/components/Card3D";
 import { bfri } from "@/content/bfri";
+import { Dna, Activity, Microscope } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Mitochondrial Genomics Showcase",
@@ -16,31 +18,39 @@ export default function MitoPage() {
   const i = m.ilisha;
 
   return (
-    <Container className="py-14">
+    <Container className="py-12 sm:py-16">
       <SectionHeading
         eyebrow="Research · Mitochondrial Genomics"
         title={m.title}
         description={m.objective}
       />
 
-      <p className="mt-4 text-sm text-ink-500 dark:text-ink-400">{m.dataCollection}</p>
-
-      <div className="mt-4 flex flex-wrap gap-1.5">
-        {m.tools.map((tool) => (
-          <span key={tool} className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[11px] text-ink-500 dark:border-line-dark dark:text-ink-400">
-            {tool}
-          </span>
-        ))}
+      <div className="mt-6 rounded-2xl border border-line/80 bg-white/75 p-6 shadow-sm backdrop-blur-md dark:border-line-dark/80 dark:bg-slate-900/60 sm:p-7">
+        <p className="text-justify text-sm leading-relaxed text-ink-800 dark:text-ink-200 sm:text-base sm:leading-7">
+          {m.dataCollection}
+        </p>
+        <div className="mt-4 flex flex-wrap gap-1.5 border-t border-line/60 pt-3 dark:border-line-dark/60">
+          {m.tools.map((tool) => (
+            <span
+              key={tool}
+              className="rounded-md border border-line/80 bg-paper/70 px-2.5 py-1 font-mono text-[11px] text-ink-600 dark:border-line-dark/80 dark:bg-slate-800/70 dark:text-cyan-300"
+            >
+              {tool}
+            </span>
+          ))}
+        </div>
       </div>
 
       {/* Tor tor section */}
-      <section className="mt-14 border-t border-line pt-10 dark:border-line-dark">
-        <h2 className="font-serif text-2xl font-semibold text-ink-900 dark:text-ink-100">
-          Tor tor mitogenome
-        </h2>
-        <p className="mt-1 font-mono text-sm text-ink-500 dark:text-ink-400">
-          NCBI accession {t.accession}
-        </p>
+      <section className="mt-14 border-t border-line/80 pt-10 dark:border-line-dark/80">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h2 className="font-serif text-2xl font-semibold text-ink-900 dark:text-ink-100">
+            Tor tor Mitogenome Architecture
+          </h2>
+          <span className="font-mono text-xs text-bio-cyan dark:text-cyan-300">
+            NCBI Accession: {t.accession}
+          </span>
+        </div>
 
         <div className="mt-6">
           <StatGrid
@@ -53,7 +63,9 @@ export default function MitoPage() {
           />
         </div>
 
-        <p className="prose-body mt-6 max-w-prose text-sm">{t.genes}. {t.pcgSpan}.</p>
+        <p className="mt-6 text-justify text-sm leading-relaxed text-ink-700 dark:text-ink-200">
+          {t.genes}. {t.pcgSpan}.
+        </p>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
           <Figure
@@ -71,14 +83,19 @@ export default function MitoPage() {
         </div>
 
         <div className="mt-8 grid gap-6 md:grid-cols-2">
-          <div className="border border-line p-5 text-sm dark:border-line-dark">
-            <h3 className="font-medium text-ink-900 dark:text-ink-100">Codon usage (RSCU)</h3>
-            <p className="mt-2 text-ink-600 dark:text-ink-300">{t.rscu}</p>
-          </div>
-          <div className="border border-line p-5 text-sm dark:border-line-dark">
-            <h3 className="font-medium text-ink-900 dark:text-ink-100">tRNA secondary structure</h3>
-            <p className="mt-2 text-ink-600 dark:text-ink-300">{t.trnaStructure}</p>
-          </div>
+          <Card3D maxTilt={2}>
+            <div className="h-full rounded-2xl border border-line/80 bg-white/75 p-6 shadow-sm backdrop-blur-sm dark:border-line-dark/80 dark:bg-slate-900/60">
+              <h3 className="font-serif text-base font-semibold text-ink-900 dark:text-ink-100">Codon usage (RSCU)</h3>
+              <p className="mt-3 text-justify text-xs leading-relaxed text-ink-600 dark:text-ink-300 sm:text-sm">{t.rscu}</p>
+            </div>
+          </Card3D>
+
+          <Card3D maxTilt={2}>
+            <div className="h-full rounded-2xl border border-line/80 bg-white/75 p-6 shadow-sm backdrop-blur-sm dark:border-line-dark/80 dark:bg-slate-900/60">
+              <h3 className="font-serif text-base font-semibold text-ink-900 dark:text-ink-100">tRNA secondary structure</h3>
+              <p className="mt-3 text-justify text-xs leading-relaxed text-ink-600 dark:text-ink-300 sm:text-sm">{t.trnaStructure}</p>
+            </div>
+          </Card3D>
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
@@ -96,24 +113,26 @@ export default function MitoPage() {
           />
         </div>
 
-        <div className="mt-8 border border-line p-5 text-sm dark:border-line-dark">
-          <h3 className="font-medium text-ink-900 dark:text-ink-100">Selection analysis (Ka/Ks)</h3>
-          <p className="mt-2 text-ink-600 dark:text-ink-300">{t.kaks.note}</p>
-          <div className="mt-3 flex flex-wrap gap-6 text-ink-700 dark:text-ink-200">
-            <span>Most relaxed constraint: <span className="font-mono">{t.kaks.mostRelaxed}</span></span>
-            <span>Most conserved: <span className="font-mono">{t.kaks.mostConserved}</span></span>
+        <div className="mt-8 rounded-2xl border border-line/80 bg-white/75 p-6 shadow-sm backdrop-blur-sm dark:border-line-dark/80 dark:bg-slate-900/60">
+          <h3 className="font-serif text-base font-semibold text-ink-900 dark:text-ink-100">Selection analysis (Ka/Ks)</h3>
+          <p className="mt-2 text-justify text-xs leading-relaxed text-ink-600 dark:text-ink-300 sm:text-sm">{t.kaks.note}</p>
+          <div className="mt-3 flex flex-wrap gap-6 text-xs sm:text-sm text-ink-700 dark:text-ink-200">
+            <span>Most relaxed constraint: <span className="font-mono text-bio-cyan dark:text-cyan-300">{t.kaks.mostRelaxed}</span></span>
+            <span>Most conserved: <span className="font-mono text-bio-emerald dark:text-emerald-300">{t.kaks.mostConserved}</span></span>
           </div>
         </div>
       </section>
 
       {/* Ilisha section */}
-      <section className="mt-16 border-t border-line pt-10 dark:border-line-dark">
-        <h2 className="font-serif text-2xl font-semibold text-ink-900 dark:text-ink-100">
-          Tenualosa ilisha mitogenome
-        </h2>
-        <p className="mt-1 font-mono text-sm text-ink-500 dark:text-ink-400">
-          NCBI accession {i.accession}
-        </p>
+      <section className="mt-16 border-t border-line/80 pt-10 dark:border-line-dark/80">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h2 className="font-serif text-2xl font-semibold text-ink-900 dark:text-ink-100">
+            Tenualosa ilisha Mitogenome
+          </h2>
+          <span className="font-mono text-xs text-bio-cyan dark:text-cyan-300">
+            NCBI Accession: {i.accession}
+          </span>
+        </div>
 
         <div className="mt-6">
           <StatGrid
@@ -141,17 +160,11 @@ export default function MitoPage() {
           />
         </div>
 
-        <div className="mt-8 border border-line p-5 text-sm dark:border-line-dark">
-          <h3 className="font-medium text-ink-900 dark:text-ink-100">Selection analysis (Ka/Ks)</h3>
-          <p className="mt-2 text-ink-600 dark:text-ink-300">{i.kaks.note}</p>
+        <div className="mt-8 rounded-2xl border border-line/80 bg-white/75 p-6 shadow-sm backdrop-blur-sm dark:border-line-dark/80 dark:bg-slate-900/60">
+          <h3 className="font-serif text-base font-semibold text-ink-900 dark:text-ink-100">Selection analysis (Ka/Ks)</h3>
+          <p className="mt-2 text-justify text-xs leading-relaxed text-ink-600 dark:text-ink-300 sm:text-sm">{i.kaks.note}</p>
         </div>
       </section>
-
-      <p className="mt-12 border-t border-line pt-6 text-xs text-ink-400 dark:border-line-dark dark:text-ink-500">
-        Figures reproduced from the BFRI internship report and associated analysis notebooks.
-        Manuscripts on this work are currently under review or in revision — see{" "}
-        <a href="/publications" className="underline hover:text-amber-600">Publications</a>.
-      </p>
     </Container>
   );
 }

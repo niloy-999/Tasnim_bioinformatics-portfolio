@@ -19,17 +19,17 @@ export default function CvPage() {
         <a
           href="/cv/Tasnim_Ul_Islam_Academic_CV.pdf"
           download
-          className="inline-flex items-center gap-2 bg-ink-900 px-5 py-2.5 text-sm font-medium text-paper hover:bg-ink-700 dark:bg-amber-500 dark:text-ink-900 dark:hover:bg-amber-400"
+          className="btn-primary"
         >
           <FileDown size={15} /> Download PDF
         </a>
-        <Link href="/publications" className="inline-flex items-center gap-2 border border-line px-5 py-2.5 text-sm font-medium text-ink-800 hover:border-amber-500 hover:text-amber-600 dark:border-line-dark dark:text-ink-100">
+        <Link href="/publications" className="btn-secondary">
           View publications
         </Link>
-        <Link href="/research" className="inline-flex items-center gap-2 border border-line px-5 py-2.5 text-sm font-medium text-ink-800 hover:border-amber-500 hover:text-amber-600 dark:border-line-dark dark:text-ink-100">
+        <Link href="/research" className="btn-secondary">
           View research
         </Link>
-        <Link href="/contact" className="inline-flex items-center gap-2 border border-line px-5 py-2.5 text-sm font-medium text-ink-800 hover:border-amber-500 hover:text-amber-600 dark:border-line-dark dark:text-ink-100">
+        <Link href="/contact" className="btn-secondary">
           Contact me
         </Link>
       </div>

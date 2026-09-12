@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Mail, Github, Linkedin, ExternalLink } from "lucide-react";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
+import Card3D from "@/components/Card3D";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -9,97 +10,88 @@ export const metadata: Metadata = {
   description: "Get in touch for research collaboration, graduate opportunities, or computational biology projects."
 };
 
+const contacts = [
+  {
+    label: "Academic email",
+    value: site.email,
+    href: `mailto:${site.email}`,
+    icon: <Mail size={18} className="text-bio-cyan dark:text-cyan-400" />
+  },
+  {
+    label: "Secondary email",
+    value: site.secondaryEmail,
+    href: `mailto:${site.secondaryEmail}`,
+    icon: <Mail size={18} className="text-bio-emerald dark:text-emerald-400" />
+  },
+  {
+    label: "GitHub",
+    value: "github.com/niloy-999",
+    href: site.links.github,
+    icon: <Github size={18} className="text-ink-700 dark:text-cyan-300" />,
+    external: true
+  },
+  {
+    label: "LinkedIn",
+    value: "linkedin.com/in/tasnim-ul-islam",
+    href: site.links.linkedin,
+    icon: <Linkedin size={18} className="text-bio-blue dark:text-blue-400" />,
+    external: true
+  },
+  {
+    label: "ORCID",
+    value: "0009-0001-2023-2015",
+    href: site.links.orcid,
+    icon: <ExternalLink size={18} className="text-bio-emerald dark:text-emerald-400" />,
+    external: true
+  },
+  {
+    label: "ResearchGate",
+    value: "View profile",
+    href: site.links.researchgate,
+    icon: <ExternalLink size={18} className="text-bio-cyan dark:text-cyan-400" />,
+    external: true
+  }
+];
+
 export default function ContactPage() {
   return (
-    <Container className="py-14">
-      <SectionHeading eyebrow="Contact" title="Get in touch" />
+    <Container className="py-12 sm:py-16">
+      <SectionHeading
+        eyebrow="Direct Inquiries"
+        title="Get in Touch"
+        description="Interested in research collaboration, graduate opportunities, computational biology, and bioinformatics projects."
+      />
 
-      <p className="prose-body mt-4 max-w-prose">
-        Interested in research collaboration, graduate opportunities, computational biology, and
-        bioinformatics projects. If you&apos;re a prospective supervisor, feel free to reach out
-        directly — I&apos;m happy to share code, data, or additional detail on any project.
+      <p className="prose-body mt-4 max-w-prose text-sm leading-relaxed sm:text-base">
+        If you&apos;re a prospective supervisor or researcher, feel free to reach out
+        directly — I&apos;m happy to share code repositories, genomic datasets, or additional technical detail on any project.
       </p>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2">
-        <a
-          href={`mailto:${site.email}`}
-          className="flex items-center gap-3 border border-line p-5 hover:border-amber-500 dark:border-line-dark"
-        >
-          <Mail size={18} className="text-amber-600 dark:text-amber-400" />
-          <div>
-            <p className="text-sm font-medium text-ink-900 dark:text-ink-100">Academic email</p>
-            <p className="text-sm text-ink-600 dark:text-ink-300">{site.email}</p>
-          </div>
-        </a>
-
-        <a
-          href={`mailto:${site.secondaryEmail}`}
-          className="flex items-center gap-3 border border-line p-5 hover:border-amber-500 dark:border-line-dark"
-        >
-          <Mail size={18} className="text-amber-600 dark:text-amber-400" />
-          <div>
-            <p className="text-sm font-medium text-ink-900 dark:text-ink-100">Secondary email</p>
-            <p className="text-sm text-ink-600 dark:text-ink-300">{site.secondaryEmail}</p>
-          </div>
-        </a>
-
-        <a
-          href={site.links.github}
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-3 border border-line p-5 hover:border-amber-500 dark:border-line-dark"
-        >
-          <Github size={18} className="text-amber-600 dark:text-amber-400" />
-          <div>
-            <p className="text-sm font-medium text-ink-900 dark:text-ink-100">GitHub</p>
-            <p className="text-sm text-ink-600 dark:text-ink-300">github.com/niloy-999</p>
-          </div>
-        </a>
-
-        <a
-          href={site.links.linkedin}
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-3 border border-line p-5 hover:border-amber-500 dark:border-line-dark"
-        >
-          <Linkedin size={18} className="text-amber-600 dark:text-amber-400" />
-          <div>
-            <p className="text-sm font-medium text-ink-900 dark:text-ink-100">LinkedIn</p>
-            <p className="text-sm text-ink-600 dark:text-ink-300">linkedin.com/in/tasnim-ul-islam</p>
-          </div>
-        </a>
-
-        <a
-          href={site.links.orcid}
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-3 border border-line p-5 hover:border-amber-500 dark:border-line-dark"
-        >
-          <ExternalLink size={18} className="text-amber-600 dark:text-amber-400" />
-          <div>
-            <p className="text-sm font-medium text-ink-900 dark:text-ink-100">ORCID</p>
-            <p className="text-sm text-ink-600 dark:text-ink-300">0009-0001-2023-2015</p>
-          </div>
-        </a>
-
-        <a
-          href={site.links.researchgate}
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-3 border border-line p-5 hover:border-amber-500 dark:border-line-dark"
-        >
-          <ExternalLink size={18} className="text-amber-600 dark:text-amber-400" />
-          <div>
-            <p className="text-sm font-medium text-ink-900 dark:text-ink-100">ResearchGate</p>
-            <p className="text-sm text-ink-600 dark:text-ink-300">View profile</p>
-          </div>
-        </a>
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        {contacts.map((c) => (
+          <Card3D key={c.label} maxTilt={3}>
+            <a
+              href={c.href}
+              target={c.external ? "_blank" : undefined}
+              rel={c.external ? "noreferrer" : undefined}
+              className="flex items-center gap-3.5 rounded-xl border border-line/80 bg-white/75 p-5 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-bio-cyan hover:shadow-glow dark:border-cyan-500/30 dark:bg-slate-900/70 dark:hover:border-cyan-400"
+            >
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-ink-100/80 dark:bg-slate-800/80">
+                {c.icon}
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-mono font-medium text-ink-500 dark:text-cyan-300/80">{c.label}</p>
+                <p className="mt-0.5 truncate text-sm font-semibold text-ink-900 dark:text-ink-100">{c.value}</p>
+              </div>
+            </a>
+          </Card3D>
+        ))}
       </div>
 
-      <div className="mt-10 border-t border-line pt-6 text-sm text-ink-500 dark:border-line-dark dark:text-ink-400">
-        <p className="font-medium text-ink-700 dark:text-ink-200">Institution</p>
-        <p>{site.institution}</p>
-        <p>{site.location}</p>
+      <div className="mt-12 rounded-xl border border-line/80 bg-white/60 p-6 backdrop-blur-sm dark:border-line-dark/80 dark:bg-slate-900/50">
+        <p className="font-serif text-base font-semibold text-ink-900 dark:text-ink-100">Institution & Location</p>
+        <p className="mt-1 text-sm text-ink-600 dark:text-ink-300">{site.institution}</p>
+        <p className="text-xs text-ink-500 dark:text-ink-400">{site.location}</p>
       </div>
     </Container>
   );

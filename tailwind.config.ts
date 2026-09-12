@@ -11,7 +11,7 @@ const config: Config = {
     extend: {
       colors: {
         paper: "#FAFAF6",
-        "paper-dark": "#0B1220",
+        "paper-dark": "#030712",
         ink: {
           900: "#0B1830",
           800: "#132038",
@@ -35,7 +35,19 @@ const config: Config = {
         line: {
           DEFAULT: "#DDE3EC",
           dark: "#24344F"
+        },
+        bio: {
+          cyan: "#06B6D4",
+          emerald: "#10B981",
+          violet: "#8B5CF6",
+          blue: "#3B82F6",
+          glow: "#22D3EE"
         }
+      },
+      boxShadow: {
+        glow: "0 0 25px -5px rgba(6, 182, 212, 0.25)",
+        "glow-lg": "0 0 35px -5px rgba(16, 185, 129, 0.3)",
+        "glow-amber": "0 0 25px -5px rgba(192, 138, 46, 0.3)"
       },
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],
@@ -44,11 +56,13 @@ const config: Config = {
       },
       maxWidth: {
         prose: "72ch",
-        content: "1180px"
+        content: "1200px"
       },
       backgroundImage: {
         "grid-lines":
-          "linear-gradient(to right, rgba(28,58,94,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(28,58,94,0.06) 1px, transparent 1px)"
+          "linear-gradient(to right, rgba(28,58,94,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(28,58,94,0.06) 1px, transparent 1px)",
+        "grid-lines-dark":
+          "linear-gradient(to right, rgba(34,211,238,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(34,211,238,0.04) 1px, transparent 1px)"
       },
       backgroundSize: {
         grid: "36px 36px"

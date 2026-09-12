@@ -1,7 +1,11 @@
 export default function ArchitectureDiagram() {
   return (
-    <div className="overflow-x-auto border border-line bg-paper p-4 dark:border-line-dark dark:bg-paper-dark">
-      <svg viewBox="0 0 980 420" className="min-w-[760px]" role="img" aria-label="DNA-protein cross-modal architecture diagram">
+    <div className="w-full">
+      <div className="mb-1 flex items-center justify-between font-mono text-[11px] text-ink-400 dark:text-ink-500 sm:hidden">
+        <span>← Swipe horizontally to explore pipeline →</span>
+      </div>
+      <div className="overflow-x-auto rounded-xl border border-line bg-paper p-4 scrollbar-thin dark:border-line-dark dark:bg-paper-dark">
+        <svg viewBox="0 0 980 420" className="min-w-[760px]" role="img" aria-label="DNA-protein cross-modal architecture diagram">
         <defs>
           <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
             <path d="M0,0 L8,4 L0,8 Z" className="fill-ink-500 dark:fill-ink-300" />
@@ -79,6 +83,7 @@ export default function ArchitectureDiagram() {
           </text>
         </g>
       </svg>
+      </div>
     </div>
   );
 }
